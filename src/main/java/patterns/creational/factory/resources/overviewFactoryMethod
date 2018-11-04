@@ -1,0 +1,29 @@
+ a)
+   1) создается интерфейс для сущности (POJO, Entity) (interface Developer) т.е для объекта,
+    который мы хотим создать в конце концов
+   2) в нем создаются методы (writeCode())
+   3) создаются имплементации интерфейса Developer (class JavaDeveloper implements Developer)
+ b)
+   1) создается интерфейс для фабрики (interface DeveloperFactory),
+    которая создает наши сущности
+   2) в нем создаются методы для создания этих сущностей (Developer createDeveloper())
+   3) создаются имплементации интерфеса DeveloperFactory
+   (class JavaDeveloperFactory implements DeveloperFactory)
+ c)
+   1) в классе-клиенте создается метод,
+    для создания объекта путем ввода его имени ввиде строки
+        static DeveloperFactory createDeveloperBySpecialty(String specialty){
+            if(specialty.equalsIgnoreCase("java")){
+                return new JavaDeveloperFactory();
+            }else if(){
+                ...
+            }else{
+                throw new RuntimeException();
+            }
+        }
+   2) в методе main(){
+         DeveloperFactory developerFactory = createDeveloperBySpecialty("java");
+         Developer developer = developerFactory.createDeveloper();
+         developer.writeCode();
+    }
+
